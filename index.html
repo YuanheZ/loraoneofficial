@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LORA-One: An Interactive Explainer</title>
+    <title>LoRA-One: An Interactive Explainer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Visualization & Content Choices:
-        - Report Info: LoRA vs LORA-One subspace alignment (Fig 1b, 2). Goal: Compare optimization paths. Viz: Interactive Line Chart (Chart.js). Interaction: Toggle buttons. Justification: Visually proves core claim.
+        - Report Info: LoRA vs LoRA-One subspace alignment (Fig 1b, 2). Goal: Compare optimization paths. Viz: Interactive Line Chart (Chart.js). Interaction: Toggle buttons. Justification: Visually proves core claim.
         - Report Info: Performance across tasks (Tables 2, 3). Goal: Compare performance. Viz: Interactive Bar Chart (Chart.js). Interaction: Dropdown menu. Justification: Digestible data exploration.
         - Report Info: Scalability (Fig 5). Goal: Show change over time. Viz: Line Chart (Chart.js). Justification: Illustrates trends.
         - Report Info: Algorithm 1. Goal: Inform. Viz: Styled HTML code block. Justification: Readable algorithm.
@@ -113,7 +113,7 @@
                 <div class="flex justify-center items-center space-x-4">
                     <a href="#results" class="btn btn-primary">Explore Results</a>
                     <a href="https://arxiv.org/abs/2502.01235" target="_blank" class="btn btn-secondary">Read Paper</a>
-                    <a href="https://github.com/YuanheZ/LORA-One" target="_blank" class="btn btn-secondary">View Code</a>
+                    <a href="https://github.com/YuanheZ/LoRA-One" target="_blank" class="btn btn-secondary">View Code</a>
                 </div>
             </div>
         </section>
@@ -148,29 +148,29 @@
             <div class="max-w-5xl mx-auto">
                 <h2 class="section-title">The Core Insight: Immediate Subspace Alignment</h2>
                 <p class="section-intro">
-                    This is the central theoretical breakthrough of LORA-One. The paper proves that standard LoRA adapters eventually align with the most important directions (the top singular subspaces) of the task-specific gradient. LORA-One asks: why wait? By using a 'Spectral Initialization' derived from a single-step full gradient, LORA-One achieves this optimal alignment from the very beginning. Interact with the chart below to see this difference in action.
+                    This is the central theoretical breakthrough of LoRA-One. The paper proves that standard LoRA adapters eventually align with the most important directions (the top singular subspaces) of the task-specific gradient. LORA-One asks: why wait? By using a 'Spectral Initialization' derived from a single-step full gradient, LORA-One achieves this optimal alignment from the very beginning. Interact with the chart below to see this difference in action.
                 </p>
                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-md border border-gray-200">
                     <div class="flex justify-center mb-4 space-x-2">
-                        <button id="show-lora-one" class="btn btn-secondary active">LORA-One</button>
+                        <button id="show-lora-one" class="btn btn-secondary active">LoRA-One</button>
                         <button id="show-lora" class="btn btn-secondary">Standard LoRA</button>
                     </div>
                     <div class="chart-container">
                         <canvas id="alignmentChart"></canvas>
                     </div>
-                    <p id="alignment-text" class="text-center mt-4 text-sm text-gray-600 max-w-2xl mx-auto">LORA-One's Spectral Initialization aligns the adapters with the optimal subspace at iteration 0, giving it a significant head start.</p>
+                    <p id="alignment-text" class="text-center mt-4 text-sm text-gray-600 max-w-2xl mx-auto">LoRA-One's Spectral Initialization aligns the adapters with the optimal subspace at iteration 0, giving it a significant head start.</p>
                 </div>
             </div>
         </section>
 
         <section id="method" class="py-16 md:py-24 px-4">
             <div class="max-w-5xl mx-auto">
-                <h2 class="section-title">The LORA-One Method</h2>
+                <h2 class="section-title">The LoRA-One Method</h2>
                 <p class="section-intro">
-                    LORA-One's effectiveness stems from its principled initialization strategy. Instead of a random start, it computes the gradient of the loss with respect to the pre-trained weights for the new task. It then performs a Singular Value Decomposition (SVD) on this gradient to find the most important directional information and uses this to construct the initial adapter matrices $A_0$ and $B_0$. This "Spectral Initialization" is the core of the algorithm.
+                    LoRA-One's effectiveness stems from its principled initialization strategy. Instead of a random start, it computes the gradient of the loss with respect to the pre-trained weights for the new task. It then performs a Singular Value Decomposition (SVD) on this gradient to find the most important directional information and uses this to construct the initial adapter matrices $A_0$ and $B_0$. This "Spectral Initialization" is the core of the algorithm.
                 </p>
                  <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg font-mono text-sm max-w-3xl mx-auto">
-                    <h3 class="text-lg font-semibold text-green-400 mb-4">// Algorithm 1: LORA-One (Simplified)</h3>
+                    <h3 class="text-lg font-semibold text-green-400 mb-4">// Algorithm 1: LoRA-One (Simplified)</h3>
                     <p><span class="text-purple-400">Input:</span> Pre-trained weight $W_{pre}$, data $D$, rank $r$</p>
                     <p class="mt-4 text-green-400 font-bold">Initialize:</p>
                     <ol class="list-decimal list-inside pl-4 mt-2 space-y-1">
@@ -193,7 +193,7 @@
             <div class="max-w-5xl mx-auto">
                 <h2 class="section-title">Key Theoretical Underpinnings</h2>
                 <p class="section-intro">
-                    LORA-One is not just an empirical success; it's built on a solid theoretical foundation. The paper provides rigorous proofs that explain why LORA-One works and how it improves upon existing methods. Here are some of the core theoretical contributions:
+                    LoRA-One is not just an empirical success; it's built on a solid theoretical foundation. The paper provides rigorous proofs that explain why LoRA-One works and how it improves upon existing methods. Here are some of the core theoretical contributions:
                 </p>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="theory-card">
@@ -202,23 +202,23 @@
                     </div>
                     <div class="theory-card">
                         <h3>2. Immediate Alignment via Spectral Initialization</h3>
-                        <p>Building on the first point, LORA-One's "Spectral Initialization" (using SVD of $\nabla_W \mathcal{L}$) is proven to achieve this optimal subspace alignment instantaneously at $t=0$. This gives LORA-One a significant advantage by starting the fine-tuning process in the most promising directions.</p>
+                        <p>Building on the first point, LoRA-One's "Spectral Initialization" (using SVD of $\nabla_W \mathcal{L}$) is proven to achieve this optimal subspace alignment instantaneously at $t=0$. This gives LoRA-One a significant advantage by starting the fine-tuning process in the most promising directions.</p>
                     </div>
                     <div class="theory-card">
                         <h3>3. Provable Linear Convergence</h3>
-                        <p>LORA-One comes with theoretical guarantees of linear convergence. This means the method is proven to approach the optimal solution at a geometric rate, ensuring efficient and reliable training. This applies to both linear models and, under certain conditions, nonlinear models like Transformers.</p>
+                        <p>LoRA-One comes with theoretical guarantees of linear convergence. This means the method is proven to approach the optimal solution at a geometric rate, ensuring efficient and reliable training. This applies to both linear models and, under certain conditions, nonlinear models like Transformers.</p>
                     </div>
                     <div class="theory-card">
                         <h3>4. Generalization Bounds</h3>
-                        <p>Beyond convergence, the theory provides generalization bounds for LORA-One. These bounds help explain why LORA-One not only trains well but also performs robustly on unseen data, which is critical for real-world applications.</p>
+                        <p>Beyond convergence, the theory provides generalization bounds for LoRA-One. These bounds help explain why LoRA-One not only trains well but also performs robustly on unseen data, which is critical for real-world applications.</p>
                     </div>
                     <div class="theory-card">
                         <h3>5. Mitigating Ill-Conditioning</h3>
-                        <p>The paper theoretically analyzes how ill-conditioning in the gradient can affect LoRA-based methods. It shows that incorporating preconditioners (e.g., based on the Hessian or Fisher information matrix) can provably mitigate these effects, leading to more stable and faster convergence for LORA-One.</p>
+                        <p>The paper theoretically analyzes how ill-conditioning in the gradient can affect LoRA-based methods. It shows that incorporating preconditioners (e.g., based on the Hessian or Fisher information matrix) can provably mitigate these effects, leading to more stable and faster convergence for LoRA-One.</p>
                     </div>
                     <div class="theory-card">
                         <h3>6. Unifying Perspectives</h3>
-                        <p>The theoretical framework developed for LORA-One also helps to unify and clarify the connections between LORA-One and other gradient-alignment-based PEFT methods. This provides a clearer understanding of the landscape of efficient fine-tuning techniques.</p>
+                        <p>The theoretical framework developed for LoRA-One also helps to unify and clarify the connections between LoRA-One and other gradient-alignment-based PEFT methods. This provides a clearer understanding of the landscape of efficient fine-tuning techniques.</p>
                     </div>
                 </div>
             </div>
@@ -228,7 +228,7 @@
             <div class="max-w-5xl mx-auto">
                 <h2 class="section-title">Interactive Results Dashboard</h2>
                 <p class="section-intro">
-                    Theoretical advantages are compelling, but empirical results are crucial. LORA-One consistently outperforms standard LoRA and other variants across a wide range of tasks and models. Select a task category below to explore the performance data from the paper. The charts show LORA-One's improvements on established benchmarks.
+                    Theoretical advantages are compelling, but empirical results are crucial. LoRA-One consistently outperforms standard LoRA and other variants across a wide range of tasks and models. Select a task category below to explore the performance data from the paper. The charts show LoRA-One's improvements on established benchmarks.
                 </p>
                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-md border border-gray-200">
                     <div class="flex flex-col md:flex-row items-center justify-center mb-6">
@@ -256,7 +256,7 @@
              <div class="max-w-5xl mx-auto">
                 <h2 class="section-title">Scalability and Efficiency</h2>
                 <p class="section-intro">
-                    A key question for any new method is how it performs with more data and whether it introduces significant computational overhead. The experiments show that LORA-One's advantages hold up during longer training, and it achieves this superior performance with virtually no extra time or memory cost during the fine-tuning phase itself.
+                    A key question for any new method is how it performs with more data and whether it introduces significant computational overhead. The experiments show that LoRA-One's advantages hold up during longer training, and it achieves this superior performance with virtually no extra time or memory cost during the fine-tuning phase itself.
                 </p>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
@@ -264,7 +264,7 @@
                          <div class="chart-container h-80">
                             <canvas id="scalabilityChart"></canvas>
                          </div>
-                         <p class="text-center mt-4 text-sm text-gray-600">Accuracy on GSM8K when fine-tuning on the full MetaMathQA dataset. LORA-One consistently leads over multiple epochs.</p>
+                         <p class="text-center mt-4 text-sm text-gray-600">Accuracy on GSM8K when fine-tuning on the full MetaMathQA dataset. LoRA-One consistently leads over multiple epochs.</p>
                     </div>
                      <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                         <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Time & Memory Efficiency</h3>
@@ -274,7 +274,7 @@
                                     <tr class="border-b bg-gray-50">
                                         <th class="p-3 font-medium">Dataset</th>
                                         <th class="p-3 font-medium">LoRA</th>
-                                        <th class="p-3 font-medium text-blue-600">LORA-One</th>
+                                        <th class="p-3 font-medium text-blue-600">LoRA-One</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -296,7 +296,7 @@
                                 </tbody>
                            </table>
                         </div>
-                         <p class="text-center mt-4 text-sm text-gray-600">The one-time cost of Spectral Initialization is negligible, making LORA-One's runtime and memory footprint nearly identical to standard LoRA.</p>
+                         <p class="text-center mt-4 text-sm text-gray-600">The one-time cost of Spectral Initialization is negligible, making LoRA-One's runtime and memory footprint nearly identical to standard LoRA.</p>
                     </div>
                 </div>
             </div>
@@ -305,14 +305,13 @@
         <footer class="py-16 px-4 bg-gray-800 text-gray-300">
             <div class="max-w-4xl mx-auto text-center">
                  <h2 class="text-2xl font-semibold text-white mb-4">Conclusion & Citation</h2>
-                 <p class="max-w-3xl mx-auto leading-relaxed mb-8">LORA-One provides a more effective, efficient, and stable method for fine-tuning LLMs, backed by rigorous theory. By achieving immediate subspace alignment, it sets a new standard for parameter-efficient adaptation.</p>
+                 <p class="max-w-3xl mx-auto leading-relaxed mb-8">LoRA-One provides a more effective, efficient, and stable method for fine-tuning LLMs, backed by rigorous theory. By achieving immediate subspace alignment, it sets a new standard for parameter-efficient adaptation.</p>
                  <div class="bg-gray-900 text-left text-sm font-mono p-6 rounded-lg">
                     <pre><code>@inproceedings{zhang2025loraone,
-  title={{LORA-One: One-Step Full Gradient Could Suffice for Fine-Tuning Large Language Models, Provably and Efficiently}},
+  title={{LoRA-One: One-Step Full Gradient Could Suffice for Fine-Tuning Large Language Models, Provably and Efficiently}},
   author={Zhang, Yuanhe and Liu, Fanghui and Chen, Yudong},
   booktitle={Proceedings of the 42nd International Conference on Machine Learning (ICML)},
-  year={2025},
-  note={Code: \url{https://github.com/YuanheZ/LORA-One}}
+  year={2025}
 }</code></pre>
                  </div>
             </div>
@@ -345,7 +344,7 @@
                 loraOne: {
                     labels: Array.from({ length: 11 }, (_, i) => `t=${i}`),
                     data: Array(11).fill(0),
-                    text: "LORA-One's Spectral Initialization aligns the adapters with the optimal subspace at iteration 0, giving it a significant head start.",
+                    text: "LoRA-One's Spectral Initialization aligns the adapters with the optimal subspace at iteration 0, giving it a significant head start.",
                     color: chartColors.primary
                 }
             };
@@ -353,31 +352,31 @@
             const resultsData = {
                 nlu: {
                     title: "Natural Language Understanding (GLUE)",
-                    text: "On the GLUE benchmark with a T5-base model, LORA-One shows significant improvements, particularly on tasks like COLA and MRPC, increasing the average accuracy by over 6 points compared to standard LoRA.",
+                    text: "On the GLUE benchmark with a T5-base model, LoRA-One shows significant improvements, particularly on tasks like COLA and MRPC, increasing the average accuracy by over 6 points compared to standard LoRA.",
                     labels: ["MNLI", "SST-2", "COLA", "QNLI", "MRPC"],
                     datasets: [
                         { label: 'LoRA', data: [85.30, 94.04, 72.84, 93.02, 68.38], backgroundColor: chartColors.secondary, borderColor: chartColors.secondaryBorder, borderWidth: 1 },
-                        { label: 'LORA-One', data: [85.89, 94.53, 82.04, 93.37, 87.83], backgroundColor: chartColors.primary, borderColor: chartColors.primaryBorder, borderWidth: 1 }
+                        { label: 'LoRA-One', data: [85.89, 94.53, 82.04, 93.37, 87.83], backgroundColor: chartColors.primary, borderColor: chartColors.primaryBorder, borderWidth: 1 }
                     ]
                 },
                 math: {
                     title: "Mathematical Reasoning (GSM8K)",
-                    text: "When fine-tuning LLaMA 2-7B for mathematical reasoning, LORA-One outperforms both LoRA and LoRA-GA, showing improved problem-solving accuracy in both direct and Chain-of-Thought (CoT) prompting.",
+                    text: "When fine-tuning LLaMA 2-7B for mathematical reasoning, LoRA-One outperforms both LoRA and LoRA-GA, showing improved problem-solving accuracy in both direct and Chain-of-Thought (CoT) prompting.",
                     labels: ["GSM8K Direct", "GSM8K CoT"],
                     datasets: [
                         { label: 'LoRA', data: [59.26, 53.36], backgroundColor: chartColors.secondary, borderColor: chartColors.secondaryBorder, borderWidth: 1 },
                         { label: 'LoRA-GA', data: [56.44, 45.15], backgroundColor: chartColors.tertiary, borderColor: chartColors.tertiaryBorder, borderWidth: 1 },
-                        { label: 'LORA-One', data: [60.44, 55.88], backgroundColor: chartColors.primary, borderColor: chartColors.primaryBorder, borderWidth: 1 }
+                        { label: 'LoRA-One', data: [60.44, 55.88], backgroundColor: chartColors.primary, borderColor: chartColors.primaryBorder, borderWidth: 1 }
                     ]
                 },
                 code: {
                     title: "Code Generation (HumanEval)",
-                    text: "In code synthesis tasks, LORA-One achieves a nearly 3-point higher PASS@1 score than standard LoRA, demonstrating its effectiveness in adapting models for structured, logical generation.",
+                    text: "In code synthesis tasks, LoRA-One achieves a nearly 3-point higher PASS@1 score than standard LoRA, demonstrating its effectiveness in adapting models for structured, logical generation.",
                     labels: ["HumanEval PASS@1"],
                     datasets: [
                         { label: 'LoRA', data: [25.85], backgroundColor: chartColors.secondary, borderColor: chartColors.secondaryBorder, borderWidth: 1 },
                         { label: 'LoRA-GA', data: [26.95], backgroundColor: chartColors.tertiary, borderColor: chartColors.tertiaryBorder, borderWidth: 1 },
-                        { label: 'LORA-One', data: [28.66], backgroundColor: chartColors.primary, borderColor: chartColors.primaryBorder, borderWidth: 1 }
+                        { label: 'LoRA-One', data: [28.66], backgroundColor: chartColors.primary, borderColor: chartColors.primaryBorder, borderWidth: 1 }
                     ]
                 }
             };
@@ -410,7 +409,7 @@
                         tension: 0.1
                     },
                     {
-                        label: 'LORA-One',
+                        label: 'LoRA-One',
                         data: [57.54, 60.84, 62.62, 63.80],
                         borderColor: chartColors.primaryBorder,
                         backgroundColor: chartColors.primary,
