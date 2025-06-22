@@ -383,19 +383,27 @@
             };
             
             const scalabilityData = {
-                labels: ['Epoch 0', 'Epoch 1', 'Epoch 2', 'Epoch 3', 'Epoch 4'],
+                labels: ['Epoch 1', 'Epoch 2', 'Epoch 3', 'Epoch 4'],
                 datasets: [
                      {
                         label: 'LoRA',
-                        data: [0, 57.5, 60.1, 61.2, 61.5],
+                        data: [55.19, 58.37, 59.28, 58.90],
                         borderColor: chartColors.secondaryBorder,
                         backgroundColor: chartColors.secondary,
                         fill: false,
                         tension: 0.1
                     },
                     {
+                        label: 'LoRA-GA',
+                        data: [56.48, 58.64, 60.16, 60.88],
+                        borderColor: chartColors.tertiaryBorder,
+                        backgroundColor: chartColors.tertiary,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
                         label: 'LORA-One',
-                        data: [0, 60.5, 62.1, 63.0, 63.4],
+                        data: [57.54, 60.84, 62.62, 63.80],
                         borderColor: chartColors.primaryBorder,
                         backgroundColor: chartColors.primary,
                         fill: false,
