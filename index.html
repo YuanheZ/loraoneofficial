@@ -99,8 +99,7 @@
         <section id="hero" class="py-16 md:py-24 px-4 bg-gray-50">
             <div class="max-w-4xl mx-auto text-center">
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">LoRA-One</h1>
-                <p class="text-xl md:text-2xl text-gray-600 mb-6">One-Step Full Gradient Could Suffice for Fine-Tuning Large Language Models,</p>
-                <p class="text-xl md:text-2xl text-gray-600 mb-6">Provably and Efficiently</p>
+                <p class="text-xl md:text-2xl text-gray-600 mb-6">One-Step Full Gradient Could Suffice for Fine-Tuning Large Language Models, Provably and Efficiently</p>
                 <div class="text-sm text-gray-500 mb-8">
                     <p>Yuanhe Zhang¹, Fanghui Liu¹, Yudong Chen²</p>
                     <p class="italic">¹University of Warwick, ²University of Wisconsin-Madison</p>
@@ -116,9 +115,9 @@
 
         <section id="challenge" class="py-16 md:py-24 px-4">
             <div class="max-w-5xl mx-auto">
-                <h2 class="section-title">The Challenge: Efficiently Adapting LLMs</h2>
+                <h2 class="section-title">Abstract</h2>
                 <p class="section-intro">
-                    Fully fine-tuning Large Language Models (LLMs) for specific tasks is incredibly powerful but demands immense computational resources, making it impractical for many. Parameter-Efficient Fine-Tuning (PEFT) methods like LoRA (Low-Rank Adaptation) offer a solution. This section introduces the standard LoRA approach and sets the stage for LORA-One's key innovation.
+                    This paper explores how theory can guide and enhance practical algorithms, using Low-Rank Adaptation (LoRA) (Hu et al., 2022) in large language models as a case study. We rigorously prove that, under gradient descent, LoRA adapters align with specific singular subspaces of the one-step full fine-tuning gradient. This result suggests that, by properly initializing the adapters using the one-step full gradient, subspace alignment can be achieved immediately—applicable to both linear and nonlinear models. Building on our theory, we propose a theory-driven algorithm, LoRA-One, where the linear convergence (as well as generalization) is built and incorporating preconditioners theoretically helps mitigate the effects of ill-conditioning. Besides, our theory reveals connections between LoRA-One and other gradient-alignment-based methods, helping to clarify misconceptions in the design of such algorithms. LoRA-One achieves significant empirical improvements over LoRA and its variants across benchmarks in natural language understanding, mathematical reasoning, and code generation.
                 </p>
                 <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200 grid md:grid-cols-2 gap-8 items-center">
                     <div>
