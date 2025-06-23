@@ -6,12 +6,9 @@
     <title>LoRA-One: An Interactive Explainer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-katex@1.0.1/dist/chartjs-plugin-katex.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
 
     <!-- Visualization & Content Choices:
         - Report Info: LoRA vs LoRA-One subspace alignment (Fig 1b, 2). Goal: Compare optimization paths. Viz: Interactive Line Chart (Chart.js). Interaction: Toggle buttons. Justification: Visually proves core claim.
@@ -99,15 +96,6 @@
         .theory-card p {
             color: #4B5563;
             line-height: 1.65;
-        }
-        Chart.register(window['chartjs-plugin-katex']);
-        options: {
-          plugins: {
-            katex: {
-              enabled: true
-            }
-          },
-          // ...
         }
     </style>
 </head>
@@ -354,7 +342,7 @@
                 lora: {
                     labels: Array.from({ length: 11 }, (_, i) => {
                         if (i === 9) return '...';
-                        if (i === 10) return '$t^* = \\Theta(\\log d)$';
+                        if (i === 10) return 't*≈log(input_dim)';
                         return `t=${i}`;
                         }),
                     data: [1.0, 0.9, 0.75, 0.55, 0.3, 0.15, 0.08, 0.04, 0.02, 0.01, 0],
