@@ -226,7 +226,7 @@
 
         <section id="results" class="py-16 md:py-24 px-4">
             <div class="max-w-5xl mx-auto">
-                <h2 class="section-title">Interactive Results Dashboard</h2>
+                <h2 class="section-title">Experimental Results Dashboard</h2>
                 <p class="section-intro">
                     Theoretical advantages are compelling, but empirical results are crucial. LoRA-One consistently outperforms standard LoRA and other variants across a wide range of tasks and models. Select a task category below to explore the performance data from the paper. The charts show LoRA-One's improvements on established benchmarks.
                 </p>
@@ -308,7 +308,8 @@
                  <p class="max-w-3xl mx-auto leading-relaxed mb-8">LoRA-One provides a more effective, efficient, and stable method for fine-tuning LLMs, backed by rigorous theory. By achieving immediate subspace alignment, it sets a new standard for parameter-efficient adaptation.</p>
                  <div class="bg-gray-900 text-left text-sm font-mono p-6 rounded-lg">
                     <pre><code>@inproceedings{zhang2025loraone,
-  title={{LoRA-One: One-Step Full Gradient Could Suffice for Fine-Tuning Large Language Models, Provably and Efficiently}},
+  title={{LoRA-One: One-Step Full Gradient Could Suffice for Fine-Tuning Large Language Models, 
+          Provably and Efficiently}},
   author={Zhang, Yuanhe and Liu, Fanghui and Chen, Yudong},
   booktitle={Proceedings of the 42nd International Conference on Machine Learning (ICML)},
   year={2025}
@@ -338,7 +339,11 @@
             
             const alignmentData = {
                 lora: {
-                    labels: Array.from({ length: 11 }, (_, i) => `t=${i}`),
+                    labels: Array.from({ length: 11 }, (_, i) => {
+                        if (i === 9) return '...';
+                        if (i === 10) return '$t^* = \\Theta(\\log d)$';
+                        return `t=${i}`;
+                        }),
                     data: [1.0, 0.9, 0.75, 0.55, 0.3, 0.15, 0.08, 0.04, 0.02, 0.01, 0],
                     text: 'Standard LoRA gradually learns the correct subspace, with the alignment angle decreasing over many training steps.',
                     color: chartColors.secondary
