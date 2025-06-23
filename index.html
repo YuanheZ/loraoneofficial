@@ -6,9 +6,13 @@
     <title>LoRA-One: An Interactive Explainer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-katex@1.0.1/dist/chartjs-plugin-katex.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+
     <!-- Visualization & Content Choices:
         - Report Info: LoRA vs LoRA-One subspace alignment (Fig 1b, 2). Goal: Compare optimization paths. Viz: Interactive Line Chart (Chart.js). Interaction: Toggle buttons. Justification: Visually proves core claim.
         - Report Info: Performance across tasks (Tables 2, 3). Goal: Compare performance. Viz: Interactive Bar Chart (Chart.js). Interaction: Dropdown menu. Justification: Digestible data exploration.
@@ -95,6 +99,15 @@
         .theory-card p {
             color: #4B5563;
             line-height: 1.65;
+        }
+        Chart.register(window['chartjs-plugin-katex']);
+        options: {
+          plugins: {
+            katex: {
+              enabled: true
+            }
+          },
+          // ...
         }
     </style>
 </head>
