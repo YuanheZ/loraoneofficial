@@ -147,9 +147,26 @@
 
         <section id="insight" class="py-16 md:py-24 px-4 bg-gray-50">
             <div class="max-w-5xl mx-auto">
-                <h2 class="section-title">The Core Insight: Immediate Subspace Alignment</h2>
+                <h2 class="section-title">The Core Insight: Subspace Alignment</h2>
                 <p class="section-intro">
-                    This is the central theoretical breakthrough of LoRA-One. The paper proves that standard LoRA adapters eventually align with the most important directions (the top singular subspaces) of the task-specific gradient. LORA-One asks: why wait? By using a 'Spectral Initialization' derived from a single-step full gradient, LORA-One achieves this optimal alignment from the very beginning. Interact with the chart below to see this difference in action.
+                    This is the central theoretical motivation of LoRA-One. We prove that vanilla LoRA will align with the most important directions (the top singular subspaces) of the first-step gradient from full fine-tuning. Under mild conditions, in the linear setting, LoRA via Gradient Descent (GD) yields
+                      <center>
+                        <img src="http://latex.codecogs.com/svg.latex?
+                             \textit{Primal:}\, 
+                             \begin{cases}
+                                e(\mathbf{x}) = W_{e|X}^\top \phi_q(\mathbf{x})
+                                \\
+                                r(\mathbf{x}) = W_{r|X}^\top \phi_k(\mathbf{x})
+                             \end{cases},
+                             \quad
+                             \textit{Dual:}\, 
+                             \begin{cases}
+                                e(\mathbf{x}) = \sum\nolimits_{j=1}^N \mathbf{h}_{r_j} \kappa(\mathbf{x},\mathbf{x}_j) 
+                                \\
+                                r(\mathbf{x}) = \sum\nolimits_{i=1}^N \mathbf{h}_{e_i} \kappa(\mathbf{x}_i,\mathbf{x}) 
+                             \end{cases}.
+                             " alt="" border="0"/>
+                      </center>
                 </p>
                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-md border border-gray-200">
                     <div class="flex justify-center mb-4 space-x-2">
