@@ -150,12 +150,12 @@
 
         <section id="method" class="py-16 md:py-24 px-4">
             <div class="max-w-5xl mx-auto">
-                <h2 class="section-title">The LoRA-One Method</h2>
+                <h2 class="section-title">Methodology</h2>
                 <p class="section-intro">
-                    LoRA-One's effectiveness stems from its principled initialization strategy. Instead of a random start, it computes the gradient of the loss with respect to the pre-trained weights for the new task. It then performs a Singular Value Decomposition (SVD) on this gradient to find the most important directional information and uses this to construct the initial adapter matrices $A_0$ and $B_0$. This "Spectral Initialization" is the core of the algorithm.
+                    Instead of a random start, the subspace alignment motivates us to initialize LoRA using the best rank-r approximation of the first-step gradient from full fine-tuning. The "Spectral Initialization" is the core of the algorithm.
                 </p>
                  <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg font-mono text-sm max-w-3xl mx-auto">
-                    <h3 class="text-lg font-semibold text-green-400 mb-4">// Algorithm 1: LoRA-One (Simplified)</h3>
+                    <h3 class="text-lg font-semibold text-green-400 mb-4">// Algorithm: LoRA-One (Simplified)</h3>
                     <p><span class="text-purple-400">Input:</span> Pre-trained weight $W_{pre}$, data $D$, rank $r$</p>
                     <p class="mt-4 text-green-400 font-bold">Initialize:</p>
                     <ol class="list-decimal list-inside pl-4 mt-2 space-y-1">
