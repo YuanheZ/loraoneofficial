@@ -217,6 +217,17 @@
                         </div>
                     </div>
                 </div>
+                <section id="nlu-chart" class="py-16 md:py-24 px-4 bg-gray-50">
+                    <div class="max-w-5xl mx-auto">
+                        <h2 class="section-title">LoRA Variants on GLUE Benchmarks</h2>
+                        <p class="section-intro">
+                            This chart summarizes performance of LoRA, LoRA-One, and other PEFT baselines across five natural language understanding tasks: MNLI, SST-2, CoLA, QNLI, and MRPC.
+                        </p>
+                        <div class="chart-container h-[400px] md:h-[350px]">
+                            <canvas id="nluResultsChart"></canvas>
+                        </div>
+                    </div>
+                </section>
             </div>
         </section>
 
@@ -355,6 +366,61 @@
                     ]
                 }
             };
+
+            const nluChartData = {
+                labels: ['MNLI', 'SST-2', 'CoLA', 'QNLI', 'MRPC'],
+                datasets: [
+                    {
+                        label: 'LoRA',
+                        data: [85.30, 94.04, 72.84, 93.02, 68.38],
+                        backgroundColor: chartColors.secondary,
+                        borderColor: chartColors.secondaryBorder,
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'LoRA+',
+                        data: [85.81, 93.85, 77.53, 93.14, 74.43],
+                        backgroundColor: chartColors.quaternary,
+                        borderColor: chartColors.quaternaryBorder,
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'P-LoRA',
+                        data: [85.28, 93.88, 79.58, 93.00, 83.91],
+                        backgroundColor: '#fbbf24',
+                        borderColor: '#f59e0b',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'PiSSA',
+                        data: [85.75, 94.07, 74.27, 93.15, 76.31],
+                        backgroundColor: '#10b981',
+                        borderColor: '#059669',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'LoRA-GA',
+                        data: [85.70, 94.11, 80.57, 93.18, 85.29],
+                        backgroundColor: chartColors.tertiary,
+                        borderColor: chartColors.tertiaryBorder,
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'LoRA-Pro',
+                        data: [86.03, 94.19, 81.94, 93.42, 86.60],
+                        backgroundColor: '#ec4899',
+                        borderColor: '#db2777',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'LoRA-One',
+                        data: [85.89, 94.53, 82.04, 93.37, 87.83],
+                        backgroundColor: chartColors.primary,
+                        borderColor: chartColors.primaryBorder,
+                        borderWidth: 1
+                    }
+                ]
+            };
             
             const scalabilityData = {
                 labels: ['Epoch 1', 'Epoch 2', 'Epoch 3', 'Epoch 4'],
@@ -434,6 +500,36 @@
                  document.getElementById('results-text').textContent = data.text;
             }
 
+            function createNLUChart() {
+                const ctx = document.getElementById('nluResultsChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: nluChartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                min: 60,
+                                max: 100,
+                                title: { display: true, text: 'Accuracy (%)' }
+                            }
+                        },
+                        plugins: {
+                            legend: { position: 'bottom' },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.raw}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
             function createScalabilityChart() {
                 const ctx = document.getElementById('scalabilityChart').getContext('2d');
                 scalabilityChartInstance = new Chart(ctx, {
@@ -463,6 +559,7 @@
             document.getElementById('task-selector').addEventListener('change', (e) => createResultsChart(e.target.value));
             
             createResultsChart('math');
+            createNLUChart();
             createScalabilityChart();
         });
     </script>
