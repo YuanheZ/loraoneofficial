@@ -205,9 +205,9 @@
                     <div class="flex flex-col md:flex-row items-center justify-center mb-6">
                         <label for="task-selector" class="mr-3 font-medium text-gray-700">Select Task Category:</label>
                         <select id="task-selector" class="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                            <option value="nlu">Natural Language Understanding (T5)</option>
                             <option value="math">Mathematical Reasoning (LLaMA2-7B)</option>
                             <option value="code">Code Generation (LLaMA2-7B)</option>
+                            <option value="inst">Instruction Tuning (LLaMA2-7B)</option>
                         </select>
                     </div>
                     <div class="grid md:grid-cols-5 gap-8 items-center">
@@ -327,18 +327,9 @@
             };
             
             const resultsData = {
-                nlu: {
-                    title: "Natural Language Understanding (GLUE)",
-                    text: "On the GLUE benchmark with a T5-base model, LoRA-One shows significant improvements, particularly on tasks like COLA and MRPC, increasing the average accuracy by over 6 points compared to standard LoRA.",
-                    labels: ["MNLI", "SST-2", "COLA", "QNLI", "MRPC"],
-                    datasets: [
-                        { label: 'LoRA', data: [85.30, 94.04, 72.84, 93.02, 68.38], backgroundColor: chartColors.secondary, borderColor: chartColors.secondaryBorder, borderWidth: 1 },
-                        { label: 'LoRA-One', data: [85.89, 94.53, 82.04, 93.37, 87.83], backgroundColor: chartColors.primary, borderColor: chartColors.primaryBorder, borderWidth: 1 }
-                    ]
-                },
                 math: {
                     title: "Mathematical Reasoning (GSM8K)",
-                    text: "When fine-tuning LLaMA 2-7B for mathematical reasoning, LoRA-One outperforms both LoRA and LoRA-GA, showing improved problem-solving accuracy in both direct and Chain-of-Thought (CoT) prompting.",
+                    text: "After fine-tuning LLaMA 2-7B on MetaMathQA(100K) for mathematical reasoning, LoRA-One outperforms both LoRA and LoRA-GA on GSM8K, showing improved problem-solving accuracy in both direct and Chain-of-Thought (CoT) prompting.",
                     labels: ["GSM8K Direct", "GSM8K CoT"],
                     datasets: [
                         { label: 'LoRA', data: [59.26, 53.36], backgroundColor: chartColors.secondary, borderColor: chartColors.secondaryBorder, borderWidth: 1 },
@@ -348,12 +339,22 @@
                 },
                 code: {
                     title: "Code Generation (HumanEval)",
-                    text: "In code synthesis tasks, LoRA-One achieves a nearly 3-point higher PASS@1 score than standard LoRA, demonstrating its effectiveness in adapting models for structured, logical generation.",
+                    text: "After fine-tuning LLaMA 2-7B on Code-Feedback(100K) for code synthesis tasks , LoRA-One achieves a nearly 3-point higher PASS@1 score than standard LoRA on HumanEval, demonstrating its effectiveness in adapting models for structured, logical generation.",
                     labels: ["HumanEval PASS@1"],
                     datasets: [
                         { label: 'LoRA', data: [25.85], backgroundColor: chartColors.secondary, borderColor: chartColors.secondaryBorder, borderWidth: 1 },
                         { label: 'LoRA-GA', data: [26.95], backgroundColor: chartColors.tertiary, borderColor: chartColors.tertiaryBorder, borderWidth: 1 },
                         { label: 'LoRA-One', data: [28.66], backgroundColor: chartColors.primary, borderColor: chartColors.primaryBorder, borderWidth: 1 }
+                    ]
+                },
+                inst: {
+                    title: "Instruction Tuning (MMLU)",
+                    text: "After instruction fine-tuning LLaMA 2-7B on Alpaca, LoRA-One also shows superior generalization on the MMLU benchmark, indicating improved knowledge retention across diverse domains.",
+                    labels: ["MMLU"],
+                    datasets: [
+                        { label: 'LoRA', data: [45.73], backgroundColor: chartColors.secondary, borderColor: chartColors.secondaryBorder, borderWidth: 1 },
+                        { label: 'LoRA-GA', data: [45.15], backgroundColor: chartColors.tertiary, borderColor: chartColors.tertiaryBorder, borderWidth: 1 },
+                        { label: 'LoRA-One', data: [47.24], backgroundColor: chartColors.primary, borderColor: chartColors.primaryBorder, borderWidth: 1 }
                     ]
                 }
             };
@@ -464,7 +465,6 @@
 
             document.getElementById('task-selector').addEventListener('change', (e) => createResultsChart(e.target.value));
 
-            createResultsChart('nlu');
             createScalabilityChart();
         });
     </script>
