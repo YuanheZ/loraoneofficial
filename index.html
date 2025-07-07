@@ -327,7 +327,7 @@
                 math: {
                     title: "Mathematical Reasoning (GSM8K)",
                     text: "After fine-tuning LLaMA 2-7B on MetaMathQA(100K) for mathematical reasoning, LoRA-One outperforms both LoRA and LoRA-GA on GSM8K, showing improved problem-solving accuracy in both direct and Chain-of-Thought (CoT) prompting.",
-                    labels: ["GSM8K Direct", "GSM8K CoT"],
+                    labels: ["Direct", "Few-Shot CoT"],
                     datasets: [
                         { label: 'LoRA', data: [59.26, 53.36], backgroundColor: chartColors.secondary, borderColor: chartColors.secondaryBorder, borderWidth: 1 },
                         { label: 'LoRA-GA', data: [56.44, 45.15], backgroundColor: chartColors.tertiary, borderColor: chartColors.tertiaryBorder, borderWidth: 1 },
@@ -337,7 +337,7 @@
                 code: {
                     title: "Code Generation (HumanEval)",
                     text: "After fine-tuning LLaMA 2-7B on Code-Feedback(100K) for code synthesis tasks , LoRA-One achieves a nearly 3-point higher PASS@1 score than standard LoRA on HumanEval, demonstrating its effectiveness in adapting models for structured, logical generation.",
-                    labels: ["HumanEval PASS@1"],
+                    labels: ["PASS@1"],
                     datasets: [
                         { label: 'LoRA', data: [25.85], backgroundColor: chartColors.secondary, borderColor: chartColors.secondaryBorder, borderWidth: 1 },
                         { label: 'LoRA-GA', data: [26.95], backgroundColor: chartColors.tertiary, borderColor: chartColors.tertiaryBorder, borderWidth: 1 },
