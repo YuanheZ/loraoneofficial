@@ -131,16 +131,16 @@
         <section id="insight" class="py-16 md:py-24 px-4 bg-gray-50">
             <div class="max-w-5xl mx-auto">
                 <h2 class="section-title">The Core Insight: Subspace Alignment</h2>
-                <p class="section-intro  text-lg text-gray-700 mb-2">
+                <p class="section-intro  text-lg text-gray-700 mb-6">
                     This is the central theoretical motivation of LoRA-One. We prove that vanilla LoRA will align with the top singular subspaces of the first-step gradient from full fine-tuning. Under mild conditions, in the linear setting, LoRA via Gradient Descent (GD) yields
                 </p>
                 <center>
                     <img src="http://latex.codecogs.com/svg.latex?
                             \|\mathbf{V}_{r^*,\perp}^{\top}(\nabla_{\mathbf{W}} L(\mathbf{W}^{\natural})) \mathbf{V}_{r^*}(\mathbf{B}_{t})\|_{op}=0\,, \quad \forall\,t\geq 1\,,
-                            " alt="" border="0" class="mt-2"/>
+                            " alt="" border="0" class="mt-6"/>
                     <img src="http://latex.codecogs.com/svg.latex?
                             \|\mathbf{U}_{r^*,\perp}^{\top}(\nabla_{\mathbf{W}} L(\mathbf{W}^{\natural})) \mathbf{U}_{r^*}(\mathbf{A}_{t^*})\|_{op}\lesssim \theta\,, \quad \text{for }\,t^* = \Theta(\log d)\,.
-                            " alt="" border="0" class="mt-2"/>
+                            " alt="" border="0" class="mt-6"/>
                 </center>
                 <center>
                         <img src="./img/mathchalora5.png" width="600" class="mt-6">
