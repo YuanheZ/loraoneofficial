@@ -163,21 +163,18 @@
         <section id="theory" class="py-16 md:py-24 px-4 bg-gray-50">
             <div class="max-w-5xl mx-auto">
                 <h2 class="section-title">Key Theoretical Underpinnings</h2>
-                <p class="section-intro">
-                    LoRA-One is not just an empirical success; it's built on a solid theoretical foundation. The paper provides rigorous proofs that explain why LoRA-One works and how it improves upon existing methods. Here are some of the core theoretical contributions:
-                </p>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="theory-card">
                         <h3>1. Subspace Alignment Dynamics</h3>
-                        <p>The theory first establishes that standard LoRA adapters, when trained with gradient descent, gradually align with the top-$r$ singular subspaces of the one-step full fine-tuning gradient, denoted as $\nabla_W \mathcal{L}(W_{pre}, D)$. This alignment is crucial for effective adaptation.</p>
+                        <p>The theory first establishes that standard LoRA adapters, when trained with gradient descent, gradually align with the top-<img src="http://latex.codecogs.com/svg.latex?r^*" alt="" border="0"/> singular subspaces of the one-step full fine-tuning gradient. This alignment is crucial for effective adaptation.</p>
                     </div>
                     <div class="theory-card">
                         <h3>2. Immediate Alignment via Spectral Initialization</h3>
-                        <p>Building on the first point, LoRA-One's "Spectral Initialization" (using SVD of $\nabla_W \mathcal{L}$) is proven to achieve this optimal subspace alignment instantaneously at $t=0$. This gives LoRA-One a significant advantage by starting the fine-tuning process in the most promising directions.</p>
+                        <p>Building on the first point, LoRA-One's "Spectral Initialization" is proven to achieve this optimal subspace alignment instantaneously at t=0. This gives LoRA-One a significant advantage by starting the fine-tuning process in the most promising directions.</p>
                     </div>
                     <div class="theory-card">
                         <h3>3. Provable Linear Convergence</h3>
-                        <p>LoRA-One comes with theoretical guarantees of linear convergence. This means the method is proven to approach the optimal solution at a geometric rate, ensuring efficient and reliable training. This applies to both linear models and, under certain conditions, nonlinear models like Transformers.</p>
+                        <p>LoRA-One comes with theoretical guarantees of linear convergence. This means the method is proven to approach the optimal solution at a linear rate, ensuring efficient and reliable training. This applies to both linear models and, under certain conditions, nonlinear models like ReLU MLP.</p>
                     </div>
                     <div class="theory-card">
                         <h3>4. Generalization Bounds</h3>
@@ -185,7 +182,7 @@
                     </div>
                     <div class="theory-card">
                         <h3>5. Mitigating Ill-Conditioning</h3>
-                        <p>The paper theoretically analyzes how ill-conditioning in the gradient can affect LoRA-based methods. It shows that incorporating preconditioners (e.g., based on the Hessian or Fisher information matrix) can provably mitigate these effects, leading to more stable and faster convergence for LoRA-One.</p>
+                        <p>The paper theoretically analyzes how ill-conditioning in the downstream tasks can affect LoRA-based methods. It shows that incorporating preconditioners can provably mitigate these effects, leading to more stable and faster convergence for LoRA-One.</p>
                     </div>
                     <div class="theory-card">
                         <h3>6. Unifying Perspectives</h3>
