@@ -154,23 +154,9 @@
                 <p class="section-intro">
                     Instead of a random start, the subspace alignment motivates us to initialize LoRA using the best rank-r approximation of the first-step gradient from full fine-tuning. The "Spectral Initialization" is the core of the algorithm.
                 </p>
-                 <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg font-mono text-sm max-w-3xl mx-auto">
-                    <h3 class="text-lg font-semibold text-green-400 mb-4">// Algorithm: LoRA-One (Simplified)</h3>
-                    <p><span class="text-purple-400">Input:</span> Pre-trained weight $W_{pre}$, data $D$, rank $r$</p>
-                    <p class="mt-4 text-green-400 font-bold">Initialize:</p>
-                    <ol class="list-decimal list-inside pl-4 mt-2 space-y-1">
-                        <li>Compute one-step full gradient: $G = \nabla_W \mathcal{L}(W_{pre}, D)$</li>
-                        <li>Perform SVD on the gradient: $U, S, V = \text{SVD}(G)$</li>
-                        <li><span class="text-pink-400 font-bold">Spectral-Init:</span> Construct $A_0$ from $U, S$ and $B_0$ from $S, V$</li>
-                        <li>Free memory used by the full gradient $G$</li>
-                    </ol>
-                     <p class="mt-4 text-green-400 font-bold">Train:</p>
-                     <ol class="list-decimal list-inside pl-4 mt-2 space-y-1" start="5">
-                        <li>For each training step:</li>
-                        <li>  Update only $A_t$ and $B_t$ using their gradients</li>
-                     </ol>
-                    <p class="mt-4"><span class="text-purple-400">Return:</span> $W_{pre} + A_{final} \cdot B_{final}$</p>
-                </div>
+                <center>
+                    <img src="./img/alg-lora-one.png" width="450" class="mt-6">
+                </center>
             </div>
         </section>
 
